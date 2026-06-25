@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Ubicación</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Mi Ubicación</h1>
+
+        <p>
+            Presiona el botón para obtener tu ubicación actual.
+            La aplicación utiliza la API de Geolocalización del navegador
+            y OpenStreetMap para mostrar tu posición en el mapa.
+        </p>
+
+        <button id="btnUbicacion">
+            Obtener Ubicación
+        </button>
+
+        <div id="datos"></div>
+
+        <div id="map"></div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

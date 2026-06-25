@@ -1,114 +1,107 @@
-## 1 Mi Ubicación (Geolocalización + Mapa)
+# Proyecto: Consumo de APIs con JavaScript
 
-Esta página obtiene la ubicación actual del usuario usando la API de geolocalización del navegador y la muestra en un mapa interactivo usando Leaflet y OpenStreetMap.
+## Descripción general
+Este proyecto es una colección de aplicaciones web desarrolladas con HTML, CSS y JavaScript puro. Su objetivo es demostrar el consumo correcto de APIs públicas, la separación de lógica y presentación, y el manejo de datos asíncronos con buenas prácticas de desarrollo frontend.
 
----
-
-###  Funcionalidades:
-- Obtener ubicación actual al presionar un botón
-- Mostrar datos de ubicación:
-  - Latitud
-  - Longitud
-  - Precisión
-- Mostrar un mapa centrado en la ubicación
-- Agregar un marcador en la posición del usuario
-- Re-generar el mapa si se solicita nuevamente la ubicación
+Cada módulo está diseñado de forma independiente, manteniendo código modular, legible y estructurado.
 
 ---
 
-###  Tecnologías y APIs utilizadas:
-- Geolocation API (navegador)
-- Leaflet.js (librería de mapas)
-- OpenStreetMap (mapas base)
+# 1. Mi Ubicación (Geolocalización + Mapa)
+
+## Descripción
+Aplicación que obtiene la ubicación del usuario mediante la Geolocation API del navegador y la representa en un mapa interactivo con Leaflet y OpenStreetMap.
+
+## Arquitectura y buenas prácticas
+- Separación clara entre lógica de obtención de datos y renderizado del mapa
+- Funciones reutilizables para inicialización y actualización del mapa
+- Manejo de errores si el usuario niega permisos o falla la API
+
+## Funcionalidades
+- Obtener ubicación actual con botón
+- Mostrar latitud, longitud y precisión
+- Renderizar mapa centrado dinámicamente
+- Agregar y actualizar marcador
+- Re-render seguro del mapa en cada solicitud
+
+## Tecnologías
+- Geolocation API
+- Leaflet.js
+- OpenStreetMap
 
 ---
 
-###  Descripción:
-El usuario puede presionar un botón para obtener su ubicación actual. El sistema solicita permiso al navegador y, si es aceptado, muestra las coordenadas y un mapa centrado en la posición detectada con un marcador indicando la ubicación exacta.
+# 2. Buscador de Videos (YouTube API)
 
+## Descripción
+Aplicación que consume la YouTube Data API v3 para realizar búsquedas dinámicas de videos y mostrar resultados estructurados en interfaz tipo tarjetas.
 
-## 2 Buscador de Videos (YouTube API)
+## Arquitectura y buenas prácticas
+- Separación entre capa de API (fetch) y capa de UI
+- Funciones asíncronas con manejo de errores (try/catch)
+- Validación de entrada del usuario antes de consumir la API
+- Manejo de respuestas vacías o inválidas
 
-Esta página permite buscar videos en YouTube utilizando la **YouTube Data API v3**, mostrando resultados dinámicos en forma de tarjetas.
+## Funcionalidades
+- Búsqueda por palabra clave
+- Renderizado dinámico de resultados (máximo 12)
+- Tarjetas con miniatura y título
+- Redirección a YouTube en nueva pestaña
+- Validación de input vacío
 
----
-
-###  Funcionalidades:
-- Buscar videos por palabra clave
-- Mostrar resultados en tarjetas con:
-  - Miniatura del video
-  - Título
-- Abrir el video en YouTube al hacer clic
-- Mostrar hasta 12 resultados por búsqueda
-- Validación de búsqueda vacía
-
----
-
-###  API utilizada:
-- YouTube Data API v3  
+## API utilizada
 https://developers.google.com/youtube/v3
 
 ---
 
-###  Descripción:
-El usuario escribe una búsqueda en el campo de texto y la aplicación consulta la API de YouTube. Los resultados se muestran como tarjetas con imagen y título. Al hacer clic en una tarjeta, se abre el video en una nueva pestaña de YouTube.
+# 3. Feed de Publicaciones (DummyJSON API)
 
+## Descripción
+Simulación de un feed tipo red social consumiendo la API de DummyJSON, mostrando publicaciones dinámicas y aleatorias.
 
-## 3 Feed de Publicaciones (API de Posts)
+## Arquitectura y buenas prácticas
+- Función separada para consumo de API
+- Función independiente para renderizado del feed
+- Manejo de estados: loading, success y error
+- Control de errores de red y API
 
-Esta página simula un feed de red social consumiendo la API de **DummyJSON**, mostrando publicaciones aleatorias de usuarios.
+## Funcionalidades
+- Carga automática al iniciar
+- Recarga manual de publicaciones
+- Posts aleatorios en cada solicitud
+- Render de usuario, contenido y reacciones
+- Indicador de carga mientras se obtiene información
+- Manejo de fallos de API
 
----
-
-###  Funcionalidades:
-- Cargar publicaciones automáticamente al abrir la página
-- Botón para actualizar y cargar nuevos posts
-- Mostrar publicaciones aleatorias en cada carga
-- Mostrar información del post:
-  - Usuario (ID)
-  - Título del post
-  - Contenido
-  - Reacciones (likes)
-- Mensajes de carga mientras se obtienen los datos
-- Manejo de errores si la API falla
-
----
-
-###  API utilizada:
-- DummyJSON Posts API  
+## API utilizada
 https://dummyjson.com/
 
 ---
 
-###  Descripción:
-La página obtiene publicaciones desde una API externa y las muestra en forma de tarjetas tipo red social. El usuario puede presionar un botón para actualizar los posts y cargar contenido nuevo aleatorio, simulando un feed dinámico como una red social real.
+# 4. Pokédex (PokeAPI)
 
+## Descripción
+Aplicación que permite consultar información de Pokémon mediante la PokeAPI, mostrando datos estructurados de forma dinámica.
 
-##  Pokédex (API de Pokémon)
+## Arquitectura y buenas prácticas
+- Función separada para consulta de API
+- Función separada para renderizar datos del Pokémon
+- Normalización de input (lowercase)
+- Manejo de errores para Pokémon inexistentes
+- Validación de respuesta antes de renderizar
 
-Esta página permite buscar información de Pokémon utilizando la **PokeAPI**, mostrando datos en pantalla de forma dinámica.
-
----
-
-###  Funcionalidades:
-- Buscar Pokémon por nombre
-- Mostrar información del Pokémon:
+## Funcionalidades
+- Búsqueda por nombre
+- Mostrar información completa:
   - Nombre
   - Imagen oficial
   - ID
   - Altura
   - Peso
-  - Tipo(s)
-- Manejo de errores si el Pokémon no existe
-- Conversión automática de texto a minúsculas para búsquedas
+  - Tipos
+- Manejo de errores si no existe el Pokémon
 
----
-
-###  API utilizada:
-- PokeAPI  
+## API utilizada
 https://pokeapi.co/
 
 ---
-
-###  Descripción:
-El usuario ingresa el nombre de un Pokémon y la aplicación consulta la API de PokeAPI. Si el Pokémon existe, se muestran sus datos principales junto con su imagen. Si no se encuentra, se muestra un mensaje de error.
